@@ -4,7 +4,7 @@ module "ssh-key-pair" {
   namespace             = "eg"
   stage                 = "test"
   name                  = "molecule"
-  ssh_public_key_path   = "./"
+  ssh_public_key_path   = "terraform"
   private_key_extension = ".pem"
   public_key_extension  = ".pub"
   chmod_command         = "chmod 600 %v"
