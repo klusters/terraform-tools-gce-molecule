@@ -25,7 +25,7 @@ module "instance_template" {
   source_image_project = var.image_project
 
   machine_type = var.machine_type
-
+  additional_disks = var.additional_disks
   metadata = {
     ssh-keys = "afathallah:${module.ssh-key-pair.public_key}"
   }

@@ -47,3 +47,14 @@ variable "machine_type" {
   description = "Instance type"
   default     = "n1-standard-1"
 }
+
+variable "additional_disks" {
+  description = "List of maps of additional disks. See https://www.terraform.io/docs/providers/google/r/compute_instance_template.html#disk_name"
+  type = list(object({
+    auto_delete  = bool
+    boot         = bool
+    disk_size_gb = number
+    disk_type    = string
+  }))
+  default = []
+}
