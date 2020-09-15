@@ -3,6 +3,12 @@ variable "region" {
   default     = "europe-west3"
 }
 
+variable "project_id" {
+  type        = string
+  description = "The GCP project ID"
+  default     = null
+}
+
 variable "instance_name" {
   description = "Name of the instacne to create"
   default     = "default"
