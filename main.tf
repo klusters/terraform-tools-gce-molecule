@@ -12,7 +12,7 @@ data "google_compute_default_service_account" "default" {
 module "instance_template" {
   source     = "terraform-google-modules/vm/google//modules/instance_template"
   version    = "4.0.0"
-  project_id = var.project_id
+
   subnetwork = var.subnetwork
   service_account = {
     scopes = ["userinfo-email", "compute-ro", "storage-ro"]
