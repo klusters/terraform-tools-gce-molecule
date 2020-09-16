@@ -53,7 +53,7 @@ variable "ssh_key_name" {
 }
 variable "ssh_key_path" {
   description = "SSH key path to write to"
-  default     = "dummy"
+  default     = "/opt/hostedtoolcache/ssh"
 }
 
 variable "additional_disks" {
