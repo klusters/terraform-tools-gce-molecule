@@ -4,7 +4,7 @@ module "ssh-key-pair" {
   namespace             = "github"
   stage                 = "ci"
   name                  = var.ssh_key_name
-  ssh_public_key_path   = "/opt/hostedtoolcache"
+  ssh_public_key_path   = var.ssh_key_path
   private_key_extension = ".pem"
   public_key_extension  = ".pub"
   chmod_command         = "chmod 600 %v"

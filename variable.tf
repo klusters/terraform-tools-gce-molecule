@@ -51,6 +51,10 @@ variable "ssh_key_name" {
   description = "SSH key name to write"
   default     = "dummy"
 }
+variable "ssh_key_path" {
+  description = "SSH key path to write to"
+  default     = "dummy"
+}
 
 variable "additional_disks" {
   description = "List of maps of additional disks. See https://www.terraform.io/docs/providers/google/r/compute_instance_template.html#disk_name"
