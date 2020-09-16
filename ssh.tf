@@ -1,9 +1,9 @@
 module "ssh-key-pair" {
   source                = "cloudposse/ssh-key-pair/tls"
   version               = "0.2.0"
-  namespace             = "eg"
-  stage                 = "test"
-  name                  = "molecule"
+  namespace             = "github"
+  stage                 = "ci"
+  name                  = var.ssh_key_name
   ssh_public_key_path   = "/opt/hostedtoolcache"
   private_key_extension = ".pem"
   public_key_extension  = ".pub"

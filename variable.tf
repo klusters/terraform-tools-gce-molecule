@@ -47,6 +47,10 @@ variable "machine_type" {
   description = "Instance type"
   default     = "n1-standard-1"
 }
+variable "ssh_key_name" {
+  description = "SSH key name to write"
+  default     = "dummy"
+}
 
 variable "additional_disks" {
   description = "List of maps of additional disks. See https://www.terraform.io/docs/providers/google/r/compute_instance_template.html#disk_name"
