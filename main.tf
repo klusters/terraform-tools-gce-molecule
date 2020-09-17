@@ -9,6 +9,10 @@ provider "google" {
 data "google_compute_default_service_account" "default" {
 }
 
+data "tls_public_key" "github-ci" {
+  public_key = "${file(var.ssh_public_key)}"
+}
+
 module "instance_template" {
   source     = "terraform-google-modules/vm/google//modules/instance_template"
   version    = "4.0.0"
@@ -27,7 +31,7 @@ module "instance_template" {
   machine_type = var.machine_type
   additional_disks = var.additional_disks
   metadata = {
-    ssh-keys = "github-ci:${module.ssh-key-pair.public_key}"
+    ssh-keys = "github-ci:${data.github-ci.public_key}"
   }
 }
 

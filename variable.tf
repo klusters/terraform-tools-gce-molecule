@@ -47,13 +47,10 @@ variable "machine_type" {
   description = "Instance type"
   default     = "n1-standard-1"
 }
-variable "ssh_key_name" {
-  description = "SSH key name to write"
-  default     = "dummy"
-}
-variable "ssh_key_path" {
-  description = "SSH key path to write to"
-  default     = "/opt/hostedtoolcache/ssh"
+
+variable "ssh_public_key" {
+  description = "SSH public key path to authorize"
+  default     = "~/.ssh/id_rsa.pub"
 }
 
 variable "additional_disks" {
