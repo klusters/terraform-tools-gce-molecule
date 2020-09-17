@@ -31,7 +31,7 @@ module "instance_template" {
   machine_type = var.machine_type
   additional_disks = var.additional_disks
   metadata = {
-    ssh-keys = "github-ci:${data.github-ci.public_key}"
+    ssh-keys = "github-ci:${data.tls_public_key.github-ci.public_key}"
   }
 }
 
