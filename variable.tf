@@ -63,3 +63,9 @@ variable "additional_disks" {
   }))
   default = []
 }
+
+variable "labels" {
+  type        = map(string)
+  description = "Labels, provided as a map"
+  default     = {}
+}

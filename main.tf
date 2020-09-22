@@ -30,6 +30,7 @@ module "instance_template" {
   metadata = {
     ssh-keys = "github-ci:${file(var.ssh_public_key)}"
   }
+  labels = var.labels
 }
 
 module "compute_instance" {
