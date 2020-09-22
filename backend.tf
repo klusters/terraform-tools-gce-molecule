@@ -1,6 +1,6 @@
 terraform {
   backend "gcs" {
-    bucket = "feisty-catcher-261412_terraform_tfstate"
+    bucket = "github-ci-290307-actions-tfstates"
     prefix = "env/molecule"
   }
 }
