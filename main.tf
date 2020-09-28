@@ -12,35 +12,37 @@ data "google_compute_default_service_account" "default" {
 
 module "instance_template" {
   source     = "terraform-google-modules/vm/google//modules/instance_template"
-  version    = "4.0.0"
+  version    = "5.0.0"
   project_id = var.project_id
-  subnetwork = var.subnetwork
   service_account = {
     scopes = ["userinfo-email", "compute-ro", "storage-ro"]
     email  = data.google_compute_default_service_account.default.email
   }
+  for_each             = var.instances
+  subnetwork           = each.value.subnetwork
+  name_prefix          = each.value.instance_name
+  source_image_family  = each.value.image
+  source_image_project = each.value.image_project
 
-  name_prefix          = var.instance_name
-  preemptible          = true
-  source_image_family  = var.image
-  source_image_project = var.image_project
-
-  machine_type = var.machine_type
-  additional_disks = var.additional_disks
+  machine_type     = each.value.machine_type
+  additional_disks = each.value.additional_disks
+  labels           = each.value.labels
   metadata = {
     ssh-keys = "github-ci:${file(var.ssh_public_key)}"
   }
-  labels = var.labels
+  preemptible = true
 }
 
 module "compute_instance" {
-  source            = "terraform-google-modules/vm/google//modules/compute_instance"
-  version           = "4.0.0"
-  region            = var.region
-  subnetwork        = var.subnetwork
+  source  = "terraform-google-modules/vm/google//modules/compute_instance"
+  version = "5.0.0"
+  region  = var.region
+
+  for_each          = var.instances
+  subnetwork        = each.value.subnetwork
   num_instances     = 1
-  hostname          = var.instance_name
-  instance_template = module.instance_template.self_link
+  hostname          = each.value.instance_name
+  instance_template = module.instance_template[each.key].self_link
   access_config = [{
     nat_ip       = var.nat_ip
     network_tier = var.network_tier
