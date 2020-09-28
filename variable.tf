@@ -69,3 +69,8 @@ variable "labels" {
   description = "Labels, provided as a map"
   default     = {}
 }
+
+variable "instances" {
+  type = map
+  default = {}
+}
