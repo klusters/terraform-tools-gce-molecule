@@ -70,7 +70,7 @@ variable "labels" {
   default     = {}
 }
 
-variable "instances" {
+variable "instance_roles" {
   type = map
   default = {}
 }
