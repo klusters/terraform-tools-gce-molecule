@@ -1,6 +1,6 @@
 variable "region" {
   description = "Region for cloud resources"
-  default     = "europe-west3"
+  default     = "europe-west1"
 }
 
 variable "project_id" {
