@@ -77,5 +77,5 @@ variable "instance_roles" {
 
 variable "ansible_sa_name" {
   type = string
-  default = "ansible_sa"
+  default = "ansible-sa"
 }
