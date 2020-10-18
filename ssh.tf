@@ -4,7 +4,6 @@ data "google_service_account_access_token" "ansible_sa" {
   provider               = google
   target_service_account = module.ansible_sa.email
   scopes                 = ["userinfo-email", "cloud-platform"]
-  lifetime               = "30s"
 }
 
 provider "google" {

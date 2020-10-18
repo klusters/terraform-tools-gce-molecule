@@ -74,3 +74,8 @@ variable "instance_roles" {
   type = map
   default = {}
 }
+
+variable "ansible_sa_name" {
+  type = string
+  default = "ansible_sa"
+}
