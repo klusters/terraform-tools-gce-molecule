@@ -2,7 +2,6 @@ provider "google" {
 
   project = var.project_id
   region  = var.region
-  version = "~> 3.0"
 }
 
 
@@ -12,7 +11,6 @@ data "google_client_openid_userinfo" "me" {}
 
 module "instance_template" {
   source     = "terraform-google-modules/vm/google//modules/instance_template"
-  version    = "5.0.0"
   project_id = var.project_id
   service_account = {
     scopes = ["userinfo-email", "compute-ro", "storage-ro"]
@@ -32,7 +30,6 @@ module "instance_template" {
 
 module "compute_instance" {
   source  = "terraform-google-modules/vm/google//modules/compute_instance"
-  version = "5.0.0"
   region  = var.region
 
   for_each    = var.instance_roles
